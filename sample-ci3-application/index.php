@@ -53,7 +53,14 @@
  *
  * NOTE: If you change these, also change the error_reporting() code below
  */
-	define('ENVIRONMENT', isset($_SERVER['CI_ENV']) ? $_SERVER['CI_ENV'] : 'development');
+// $_SERVER['CI_ENV']='local';
+if (@$_SERVER['CI_ENV']=='production' || basename(__DIR__)=='service') {
+    define('ENVIRONMENT', isset($_SERVER['CI_ENV']) ? $_SERVER['CI_ENV'] : 'production');
+} else if (@$_SERVER['CI_ENV']=='development' || basename(__DIR__)=='dev') {
+    define('ENVIRONMENT', isset($_SERVER['CI_ENV']) ? $_SERVER['CI_ENV'] : 'development');
+} else if (@$_SERVER['CI_ENV']=='local') {
+    define('ENVIRONMENT', isset($_SERVER['CI_ENV']) ? $_SERVER['CI_ENV'] : 'local');
+}
 
 /*
  *---------------------------------------------------------------
@@ -65,6 +72,10 @@
  */
 switch (ENVIRONMENT)
 {
+	case 'local':
+        error_reporting(-1);
+        ini_set('display_errors', 1);
+    break;
 	case 'development':
 		error_reporting(-1);
 		ini_set('display_errors', 1);
