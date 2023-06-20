@@ -29,5 +29,9 @@ class Sample extends CI_Controller {
     {
         $this->load->view('sample/variable');
     }
+    public function array()
+    {
+        $this->load->view('sample/array');
+    }
     
 }
