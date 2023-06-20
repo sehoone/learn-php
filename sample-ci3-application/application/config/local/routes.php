@@ -55,3 +55,4 @@ $route['translate_uri_dashes'] = FALSE;
 
 // sample
 $route['sample/ramdomNumber']['get'] = 'sample/ramdomNumber';
+$route['sample/variable']['get'] = 'sample/variable';

@@ -24,5 +24,10 @@ class Sample extends CI_Controller {
         log_message("info", "Informational Message");
         $this->load->view('sample/ramdomNumber');
     }
-
+    
+    public function variable()
+    {
+        $this->load->view('sample/variable');
+    }
+    
 }
